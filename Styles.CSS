@@ -1,161 +1,25 @@
-/* Color Palette:
-   - Primary Dark Blue: #1E3A8A
-   - Accent Light Blue: #3B82F6
-   - Light Background: #F3F4F6
-   - Dark Text: #1F2937
-*/
-
-/* Base Typography & Mobile First Styles */
-body {
-    font-family: Arial, sans-serif;
-    color: #1F2937;
-    background-color: #F3F4F6;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+/* Simple Dark Mode */
+body.dark-mode {
+    background-color: #222222;
+    color: #ffffff;
 }
 
-header {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
-    padding: 1.5rem;
-    text-align: center;
+body.dark-mode header, 
+body.dark-mode footer {
+    background-color: #111111;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.8rem;
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #666666;
 }
 
-/* Flexbox Navigation */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem;
-    display: block;
-}
-
-nav a:hover {
-    background-color: #3B82F6;
-}
-
-/* Layout Elements */
-main {
-    padding: 1.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-section {
-    background-color: #FFFFFF;
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-    border-radius: 4px;
-}
-
-h2 {
-    color: #1E3A8A;
-    font-size: 1.4rem;
-    margin-top: 0;
-}
-
-h3 {
-    color: #3B82F6;
-    font-size: 1.1rem;
-}
-
-/* Media & Form Styling */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-figure {
-    margin: 0;
-    padding: 0;
-}
-
-figcaption {
-    font-size: 0.9rem;
-    color: #1F2937;
-    margin-top: 0.5rem;
-}
-
-fieldset {
-    border: 1px solid #1E3A8A;
-    padding: 1rem;
-}
-
-legend {
-    color: #1E3A8A;
-    font-weight: bold;
-    padding: 0 0.5rem;
-}
-
-form p {
-    margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.25rem;
-    font-weight: bold;
-}
-
-input, select, textarea, button {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #1F2937;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #3B82F6;
-}
-
-footer {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-
-/* Responsive Layout Media Query for Tablet/Desktop */
-@media (min-width: 768px) {
-    nav ul {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-    }
-
-    /* Flexbox layout for team members and features on larger screens */
-    main section {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card-container {
-        display: flex;
-        gap: 1rem;
-    }
+/* Accessibility Focus States */
+a:focus, 
+button:focus, 
+input:focus, 
+textarea:focus {
+    outline: 3px solid #0066cc;
 }
