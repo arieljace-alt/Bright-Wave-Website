@@ -2,80 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bright Wave Web Design - Contact</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bright Wave</title>
+    <link rel="stylesheet" href="Styles.CSS">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
     <header>
-        <h1>Contact Us</h1>
+        <div class="logo">Bright Wave</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button id="theme-btn">Dark Mode</button>
     </header>
 
     <main>
-        <section>
-            <h2>Send Us a Message</h2>
-            <p>Please fill out the form below to get a free price quote for your website project.</p>
+        <h1>Contact Us</h1>
+        <p>Fill out this form to send us a message.</p>
 
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Contact Form</legend>
+        <form id="my-form">
+            <!-- Error message container for JS -->
+            <p id="error-text" style="color: red; font-weight: bold;"></p>
 
-                    <p>
-                        <label for="name">Your Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <span id="name-error" style="color: red; font-size: 0.9rem;"></span>
-                    </p>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
 
-                    <p>
-                        <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <span id="email-error" style="color: red; font-size: 0.9rem;"></span>
-                    </p>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br><br>
 
-                    <p>
-                        <label for="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="phone">
-                    </p>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4"></textarea><br><br>
 
-                    <p>
-                        <label for="service">Service Requested:</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a Service</option>
-                            <option value="web-design">Web Design</option>
-                            <option value="seo">Search Engine Setup</option>
-                            <option value="updates">Site Updates</option>
-                        </select>
-                    </p>
-
-                    <!-- Interactive Feature Output Container -->
-                    <p id="price-estimate" style="font-weight: bold; color: #1E3A8A;">Estimated Base Price: $0</p>
-
-                    <p>
-                        <label for="message">Project Details:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </p>
-
-                    <p>
-                        <button type="submit">Submit</button>
-                    </p>
-                </fieldset>
-            </form>
-        </section>
+            <button type="submit">Submit</button>
+        </form>
     </main>
 
     <footer>
-        <p>Copyright 2026 Bright Wave Web Design</p>
+        <p>&copy; 2026 Bright Wave</p>
     </footer>
-
-    <!-- Connect JavaScript File -->
-    <script src="script.js"></script>
 </body>
 </html>
