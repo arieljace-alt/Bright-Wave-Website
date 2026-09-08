@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Bright Wave Web Design - Contact</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -30,11 +31,13 @@
                     <p>
                         <label for="name">Your Name:</label>
                         <input type="text" id="name" name="name" required>
+                        <span id="name-error" style="color: red; font-size: 0.9rem;"></span>
                     </p>
 
                     <p>
                         <label for="email">Your Email:</label>
                         <input type="email" id="email" name="email" required>
+                        <span id="email-error" style="color: red; font-size: 0.9rem;"></span>
                     </p>
 
                     <p>
@@ -51,6 +54,9 @@
                             <option value="updates">Site Updates</option>
                         </select>
                     </p>
+
+                    <!-- Interactive Feature Output Container -->
+                    <p id="price-estimate" style="font-weight: bold; color: #1E3A8A;">Estimated Base Price: $0</p>
 
                     <p>
                         <label for="message">Project Details:</label>
@@ -69,5 +75,7 @@
         <p>Copyright 2026 Bright Wave Web Design</p>
     </footer>
 
+    <!-- Connect JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>
