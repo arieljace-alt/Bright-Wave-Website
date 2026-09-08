@@ -1,101 +1,47 @@
-// Data structures using objects and arrays
-const serviceOptions = [
-    { id: 'web-design', name: 'Web Design & Development', basePrice: 500 },
-    { id: 'seo', name: 'Search Engine Setup', basePrice: 300 },
-    { id: 'updates', name: 'Website Maintenance', basePrice: 150 }
-];
+// Dark Mode Toggle using LocalStorage
+var themeButton = document.getElementById("theme-btn");
 
-const selectedPreferences = {
-    service: '',
-    savedAt: ''
-};
-
-// Function 1: Interactive Feature - Calculate estimated cost and update display
-function calculateEstimate() {
-    const serviceSelect = document.getElementById('service');
-    const displayElement = document.getElementById('price-estimate');
-    
-    if (!serviceSelect || !displayElement) return;
-
-    const selectedValue = serviceSelect.value;
-    const matchedService = serviceOptions.find(item => item.id === selectedValue);
-
-    if (matchedService) {
-        displayElement.textContent = `Estimated Base Price: $${matchedService.basePrice}`;
-        savePreference(selectedValue);
-    } else {
-        displayElement.textContent = 'Estimated Base Price: $0';
-    }
+// Check if dark mode was saved previously
+if (localStorage.getItem("siteTheme") === "dark") {
+    document.body.classList.add("dark-mode");
 }
 
-// Function 2: Client-Side Data Storage - Save to localStorage
-function savePreference(serviceId) {
-    selectedPreferences.service = serviceId;
-    selectedPreferences.savedAt = new Date().toLocaleTimeString();
-    localStorage.setItem('brightWaveServicePref', JSON.stringify(selectedPreferences));
-}
-
-// Function 3: Client-Side Data Storage - Load from localStorage
-function loadSavedPreference() {
-    const savedData = localStorage.getItem('brightWaveServicePref');
-    const serviceSelect = document.getElementById('service');
-    const displayElement = document.getElementById('price-estimate');
-
-    if (savedData && serviceSelect && displayElement) {
-        const parsedData = JSON.parse(savedData);
-        serviceSelect.value = parsedData.service;
+if (themeButton) {
+    themeButton.addEventListener("click", function() {
+        document.body.classList.toggle("dark-mode");
         
-        const matchedService = serviceOptions.find(item => item.id === parsedData.service);
-        if (matchedService) {
-            displayElement.textContent = `Estimated Base Price: $${matchedService.basePrice} (Restored from previous visit)`;
+        // Save user preference
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("siteTheme", "dark");
+        } else {
+            localStorage.setItem("siteTheme", "light");
         }
-    }
+    });
 }
 
-// Function 4: Form Validation
-function validateForm(event) {
-    let isValid = true;
+// Simple Form Validation
+var contactForm = document.getElementById("my-form");
 
-    // Elements and Error Message containers
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
+if (contactForm) {
+    contactForm.addEventListener("submit", function(event) {
+        var nameInput = document.getElementById("name").value;
+        var emailInput = document.getElementById("email").value;
+        var messageInput = document.getElementById("message").value;
+        var errorText = document.getElementById("error-text");
 
-    // Reset previous error messages
-    nameError.textContent = '';
-    emailError.textContent = '';
-
-    // Check 1: Required Name Length
-    if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
-        nameError.textContent = 'Please enter your name (at least 2 characters).';
-        isValid = false;
-    }
-
-    // Check 2: Email Format Validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailInput.value.trim())) {
-        emailError.textContent = 'Please enter a valid email address (e.g., name@example.com).';
-        isValid = false;
-    }
-
-    // Prevent submission if invalid
-    if (!isValid) {
-        event.preventDefault();
-    }
+        // Basic check for empty fields or missing @ in email
+        if (nameInput === "" || emailInput === "" || messageInput === "") {
+            event.preventDefault(); // stop form submission
+            errorText.style.color = "red";
+            errorText.textContent = "Please fill out all fields before submitting.";
+        } else if (emailInput.indexOf("@") === -1) {
+            event.preventDefault(); // stop form submission
+            errorText.style.color = "red";
+            errorText.textContent = "Please enter a valid email address with an @ symbol.";
+        } else {
+            event.preventDefault(); // stop submit for preview testing
+            errorText.style.color = "green";
+            errorText.textContent = "Thank you! Your message has been sent.";
+        }
+    });
 }
-
-// Initialize event listeners after page loads
-document.addEventListener('DOMContentLoaded', () => {
-    loadSavedPreference();
-
-    const serviceSelect = document.getElementById('service');
-    if (serviceSelect) {
-        serviceSelect.addEventListener('change', calculateEstimate);
-    }
-
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', validateForm);
-    }
-});
